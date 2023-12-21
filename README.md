@@ -22,15 +22,15 @@ AzureLocation.WestUS specifies the location for the App Service Plan, which in t
 
 The Sku property of the AppServicePlanData object is set to a new instance of AppServiceSkuDescription. This includes various parameters such as:
 
-Name: "B1", indicating the specific SKU name.
+**Name**: "B1", indicating the specific SKU name.
 
-Tier: "Basic", indicating the pricing tier.
+**Tier**: "Basic", indicating the pricing tier.
 
-Size: "B1", indicating the size of the plan.
+**Size**: "B1", indicating the size of the plan.
 
-Family: "B", indicating the family of the plan.
+**Family**: "B", indicating the family of the plan.
 
-Capacity: 1, indicating the number of instances.
+**Capacity**: 1, indicating the number of instances.
 
 ```csharp
 Console.WriteLine("Creating App Service Plan...");
@@ -118,6 +118,10 @@ var webApp = await resourceGroup.GetWebSites().CreateOrUpdateAsync(WaitUntil.Com
 
 Console.WriteLine($"Web App '{webAppName}' created successfully.");
 ```
+
+## 5. In Azure Portal verify the new services
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample25_Create_AppServicePlan_and_WebApp/assets/32194879/aad6b8b6-ad69-44ab-b358-20f0ccae7070)
 
 
 
