@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure SDK for .NET", "Azure SDK for .NET.csproj", "{F4FA05E5-3B13-411C-8CDC-331DE1A0B5D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4FA05E5-3B13-411C-8CDC-331DE1A0B5D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4FA05E5-3B13-411C-8CDC-331DE1A0B5D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4FA05E5-3B13-411C-8CDC-331DE1A0B5D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4FA05E5-3B13-411C-8CDC-331DE1A0B5D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D6FB186-59A2-4F44-AF0E-B2280DAC1EDB}
+	EndGlobalSection
+EndGlobal
