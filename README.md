@@ -32,6 +32,8 @@ The Sku property of the AppServicePlanData object is set to a new instance of Ap
 
 **Capacity**: 1, indicating the number of instances.
 
+**IMPORTANT NOTE**: if we would like to specify in App Service Plan more parameters **AppServicePlanData** and **AppServiceSkuDescription**
+
 ```csharp
 Console.WriteLine("Creating App Service Plan...");
 
@@ -55,6 +57,8 @@ Console.WriteLine($"App Service Plan '{appServicePlanName}' created successfully
 ## 3. Create the Azure WebApp
 
 This code is configuring and deploying a web application in an Azure environment, specifying its location and service plan, and then either creating a new application or updating an existing one in a specific resource group.
+
+**IMPORTANT NOTE**: if we would like to specify in App Service Plan more parameters **WebSiteData**
 
 ```csharp
 ...
