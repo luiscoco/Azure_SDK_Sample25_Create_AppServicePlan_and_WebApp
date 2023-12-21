@@ -12,12 +12,42 @@ SubscriptionResource subscription = await armClient.GetDefaultSubscriptionAsync(
 ```
 
 
+
+
 ## 2. Create the Azure ServicePlan
 
+```csharp
+// Define the App Service Plan
+string appServicePlanName = "myAppServicePlanluiscoco1974";
+string resourceGroupName = "myRg";
+string webAppName = "myWebAppluiscoco1974";
 
+Console.WriteLine("Creating App Service Plan...");
+
+var resourceGroup = await subscription.GetResourceGroups().GetAsync(resourceGroupName);
+var appServicePlanData = new AppServicePlanData(AzureLocation.WestUS)
+{
+    Sku = new AppServiceSkuDescription
+    {
+        Name = "B1", // Standard tier
+        Tier = "Basic",
+        Size = "B1",
+        Family = "B",
+        Capacity = 1
+    }
+};
+
+var appServicePlan = await resourceGroup.Value.GetAppServicePlans().CreateOrUpdateAsync(WaitUntil.Completed, appServicePlanName, appServicePlanData);
+
+Console.WriteLine($"App Service Plan '{appServicePlanName}' created successfully.");
+```
 
 
 ## 3. Create the Azure WebApp
+
+```csharp
+
+```
 
 
 ## 4. Whole application source code
