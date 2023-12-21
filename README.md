@@ -1,5 +1,7 @@
 # How to create Azure App Service Plan and Azure Web App with Azure SDK for .NET
 
+This sample source code is stored in repo: https://github.com/luiscoco/Azure_SDK_Sample25_Create_AppServicePlan_and_WebApp/tree/master
+
 ## 1. Create the Azure Authorization credentials
 
 This code is initializing a client for Azure Resource Manager with default credentials and then asynchronously fetching details about the default Azure subscription associated with those credentials.
