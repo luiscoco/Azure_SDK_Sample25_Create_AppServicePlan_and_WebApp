@@ -5,6 +5,7 @@ using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.AppService;
 using Azure.ResourceManager.AppService.Models;
+using System.Diagnostics;
 
 // Authenticate with Azure using DefaultAzureCredential
 ArmClient armClient = new ArmClient(new DefaultAzureCredential());
@@ -15,10 +16,29 @@ string appServicePlanName = "myAppServicePlanluiscoco1974";
 string resourceGroupName = "myRg";
 string webAppName = "myWebAppluiscoco1974";
 
+Console.WriteLine("Checking for existing Resource Group...");
+
+// Check if the Resource Group exists, create if it does not exist
+ResourceGroupResource resourceGroup;
+bool resourceGroupExists = await subscription.GetResourceGroups().ExistsAsync(resourceGroupName);
+if (!resourceGroupExists)
+{
+    Console.WriteLine($"Resource Group '{resourceGroupName}' not found. Creating new Resource Group...");
+
+    var resourceGroupData = new ResourceGroupData(AzureLocation.WestUS);
+    resourceGroup = await subscription.GetResourceGroups().CreateOrUpdateAsync(WaitUntil.Completed, resourceGroupName, resourceGroupData);
+
+    Console.WriteLine($"Resource Group '{resourceGroupName}' created successfully.");
+}
+else
+{
+    resourceGroup = await subscription.GetResourceGroups().GetAsync(resourceGroupName);
+    Console.WriteLine($"Resource Group '{resourceGroupName}' already exists.");
+}
+
 Console.WriteLine("Creating App Service Plan...");
 
-var resourceGroup = await subscription.GetResourceGroups().GetAsync(resourceGroupName);
-var appServicePlanData = new AppServicePlanData(AzureLocation.EastUS)
+var appServicePlanData = new AppServicePlanData(AzureLocation.WestUS)
 {
     Sku = new AppServiceSkuDescription
     {
@@ -30,15 +50,15 @@ var appServicePlanData = new AppServicePlanData(AzureLocation.EastUS)
     }
 };
 
-var appServicePlan = await resourceGroup.Value.GetAppServicePlans().CreateOrUpdateAsync(WaitUntil.Completed, appServicePlanName, appServicePlanData);
+var appServicePlan = await resourceGroup.GetAppServicePlans().CreateOrUpdateAsync(WaitUntil.Completed, appServicePlanName, appServicePlanData);
 
 Console.WriteLine($"App Service Plan '{appServicePlanName}' created successfully.");
 
-var webAppData = new WebSiteData(AzureLocation.EastUS)
+var webAppData = new WebSiteData(AzureLocation.WestUS)
 {
     AppServicePlanId = appServicePlan.Value.Id
 };
 
-var webApp = await resourceGroup.Value.GetWebSites().CreateOrUpdateAsync(WaitUntil.Completed, webAppName, webAppData);
+var webApp = await resourceGroup.GetWebSites().CreateOrUpdateAsync(WaitUntil.Completed, webAppName, webAppData);
 
 Console.WriteLine($"Web App '{webAppName}' created successfully.");
